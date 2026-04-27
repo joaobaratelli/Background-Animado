@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animated Background</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #000;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    h1 {
+        position: absolute;
+        z-index: 2;
+        font-size: 40px;
+        letter-spacing: 2px;
+    }
+
+    .square {
+        position: absolute;
+        bottom: -50px;
+        background: rgba(200, 230, 255, 0.15);
+        border: 1px solid rgba(200, 230, 255, 0.3);
+        animation: rise linear infinite;
+    }
+
+    @keyframes rise {
+        from {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.6;
+        }
+        to {
+            transform: translateY(-110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Animated Background</h1>
+
+<script>
+    const amount = 15; // pouca quantidade
+
+    for (let i = 0; i < amount; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+
+        const size = Math.random() * 40 + 10;
+        square.style.width = size + "px";
+        square.style.height = size + "px";
+
+        square.style.left = Math.random() * 100 + "vw";
+
+        square.style.animationDuration = (Math.random() * 10 + 10) + "s";
+        square.style.animationDelay = Math.random() * 5 + "s";
+
+        document.body.appendChild(square);
+    }
+</script>
+
+</body>
+</html>
